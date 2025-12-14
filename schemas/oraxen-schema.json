@@ -2,7 +2,7 @@
   "oraxenVersion": "1.200.0",
   "minecraftVersion": "1.21.4",
   "serverVersion": "1.21.4-R0.1-SNAPSHOT",
-  "generatedAt": "2025-12-14T00:26:06.007292961Z",
+  "generatedAt": "2025-12-14T03:08:00.545605659Z",
   "enums": {
     "Material": {
       "values": [
@@ -7144,21 +7144,21 @@
           "type": "object",
           "description": "Directional block configuration",
           "properties": {
-            "x_block": {
-              "type": "string",
-              "description": "X-axis variant ID"
-            },
             "y_block": {
               "type": "string",
               "description": "Y-axis variant ID"
             },
-            "parent_block": {
+            "x_block": {
               "type": "string",
-              "description": "Parent block ID"
+              "description": "X-axis variant ID"
             },
             "z_block": {
               "type": "string",
               "description": "Z-axis variant ID"
+            },
+            "parent_block": {
+              "type": "string",
+              "description": "Parent block ID"
             }
           }
         },
@@ -7166,15 +7166,15 @@
           "type": "object",
           "description": "Farm block configuration",
           "properties": {
+            "dry_block": {
+              "type": "string",
+              "description": "Block ID when dried"
+            },
             "moisture": {
               "type": "integer",
               "description": "Moisture level",
               "default": 0,
               "min": 0
-            },
-            "dry_block": {
-              "type": "string",
-              "description": "Block ID when dried"
             }
           }
         },
@@ -7326,16 +7326,16 @@
               "type": "object",
               "description": "Light levels",
               "properties": {
-                "block": {
+                "sky": {
                   "type": "integer",
-                  "description": "Block light level",
+                  "description": "Sky light level",
                   "default": 0,
                   "min": 0,
                   "max": 15
                 },
-                "sky": {
+                "block": {
                   "type": "integer",
-                  "description": "Sky light level",
+                  "description": "Block light level",
                   "default": 0,
                   "min": 0,
                   "max": 15
@@ -7363,6 +7363,17 @@
           "type": "object",
           "description": "Storage container configuration",
           "properties": {
+            "rows": {
+              "type": "integer",
+              "description": "Number of inventory rows",
+              "default": 1,
+              "min": 1,
+              "max": 6
+            },
+            "title": {
+              "type": "string",
+              "description": "Inventory title"
+            },
             "type": {
               "type": "string",
               "description": "Storage type",
@@ -7372,17 +7383,6 @@
                 "ENDERCHEST",
                 "DISPOSAL"
               ]
-            },
-            "title": {
-              "type": "string",
-              "description": "Inventory title"
-            },
-            "rows": {
-              "type": "integer",
-              "description": "Number of inventory rows",
-              "default": 1,
-              "min": 1,
-              "max": 6
             }
           }
         }
@@ -7754,12 +7754,9 @@
           "type": "object",
           "description": "Sapling growth configuration",
           "properties": {
-            "grow_chance": {
-              "type": "number",
-              "description": "Growth chance per check",
-              "default": 0.1,
-              "min": 0.0,
-              "max": 1.0
+            "grow_block": {
+              "type": "string",
+              "description": "Block ID when grown"
             },
             "min_light": {
               "type": "integer",
@@ -7768,9 +7765,12 @@
               "min": 0,
               "max": 15
             },
-            "grow_block": {
-              "type": "string",
-              "description": "Block ID when grown"
+            "grow_chance": {
+              "type": "number",
+              "description": "Growth chance per check",
+              "default": 0.1,
+              "min": 0.0,
+              "max": 1.0
             }
           }
         }
